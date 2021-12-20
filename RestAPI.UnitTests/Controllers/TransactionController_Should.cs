@@ -18,15 +18,15 @@ using Xunit;
 
 namespace RestAPI.UnitTests.Controllers
 {
-    public class TransferController_Should
+    public class TransactionController_Should
     {
-        private readonly Mock<ITransferService> _transferServiceMock = new Mock<ITransferService>();
+        private readonly Mock<ITransactionService> _transactionServiceMock = new Mock<ITransactionService>();
 
-        private readonly TransferController _sut;
+        private readonly TransactionController _sut;
 
-        public TransferController_Should()
+        public TransactionController_Should()
         {
-            _sut = new TransferController(_transferServiceMock.Object);
+            _sut = new TransactionController(_transactionServiceMock.Object);
         }
 
         [Theory, AutoData]
@@ -38,8 +38,8 @@ namespace RestAPI.UnitTests.Controllers
             var user = SetupHttpContent();
             var localId = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            _transferServiceMock
-                .Setup(transferService => transferService.GetAllTopUpsAsync(localId, accountIban))
+            _transactionServiceMock
+                .Setup(transactionService => transactionService.GetAllTopUpsAsync(localId, accountIban))
                 .ReturnsAsync(shortTopUpsResponse);
 
             // Act
@@ -50,8 +50,8 @@ namespace RestAPI.UnitTests.Controllers
                 .Which.Result.Should().BeOfType<OkObjectResult>()
                 .Which.Value.Should().BeEquivalentTo(shortTopUpsResponse);
 
-            _transferServiceMock
-                .Verify(transferService => transferService.GetAllTopUpsAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+            _transactionServiceMock
+                .Verify(transactionService => transactionService.GetAllTopUpsAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
         }
 
         [Theory, AutoData]
@@ -62,8 +62,8 @@ namespace RestAPI.UnitTests.Controllers
             var user = SetupHttpContent();
             var localId = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            _transferServiceMock
-                .Setup(transferService => transferService.GetAllTopUpsAsync(localId, accountIban))
+            _transactionServiceMock
+                .Setup(transactionService => transactionService.GetAllTopUpsAsync(localId, accountIban))
                 .ThrowsAsync(new UserException($"You do not have account with IBAN: {accountIban}", 404));
 
             // Act
@@ -74,8 +74,8 @@ namespace RestAPI.UnitTests.Controllers
                 .Which.Result.Should().BeOfType<NotFoundObjectResult>()
                 .Which.Value.Should().BeEquivalentTo($"You do not have account with IBAN: {accountIban}");
 
-            _transferServiceMock
-                .Verify(transferService => transferService.GetAllTopUpsAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+            _transactionServiceMock
+                .Verify(transactionService => transactionService.GetAllTopUpsAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
         }
 
         [Theory, AutoData]
@@ -87,8 +87,8 @@ namespace RestAPI.UnitTests.Controllers
             var user = SetupHttpContent();
             var localId = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            _transferServiceMock
-                .Setup(transferService => transferService.GetTopUpAsync(localId, id))
+            _transactionServiceMock
+                .Setup(transactionService => transactionService.GetTopUpAsync(localId, id))
                 .ReturnsAsync(shortTopUpResponse);
 
             // Act
@@ -99,8 +99,8 @@ namespace RestAPI.UnitTests.Controllers
                 .Which.Result.Should().BeOfType<OkObjectResult>()
                 .Which.Value.Should().BeEquivalentTo(shortTopUpResponse);
 
-            _transferServiceMock
-                .Verify(transferService => transferService.GetTopUpAsync(It.IsAny<string>(), It.IsAny<Guid>()), Times.Once);
+            _transactionServiceMock
+                .Verify(transactionService => transactionService.GetTopUpAsync(It.IsAny<string>(), It.IsAny<Guid>()), Times.Once);
         }
 
         [Theory, AutoData]
@@ -111,8 +111,8 @@ namespace RestAPI.UnitTests.Controllers
             var user = SetupHttpContent();
             var localId = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            _transferServiceMock
-                .Setup(transferService => transferService.GetTopUpAsync(localId, id))
+            _transactionServiceMock
+                .Setup(transactionService => transactionService.GetTopUpAsync(localId, id))
                 .ThrowsAsync(new UserException($"You do not have TopUP with Id: {id}", 404));
 
             // Act
@@ -123,8 +123,8 @@ namespace RestAPI.UnitTests.Controllers
                 .Which.Result.Should().BeOfType<NotFoundObjectResult>()
                 .Which.Value.Should().BeEquivalentTo($"You do not have TopUP with Id: {id}");
 
-            _transferServiceMock
-                .Verify(transferService => transferService.GetTopUpAsync(It.IsAny<string>(), It.IsAny<Guid>()), Times.Once);
+            _transactionServiceMock
+                .Verify(transactionService => transactionService.GetTopUpAsync(It.IsAny<string>(), It.IsAny<Guid>()), Times.Once);
         }
 
         [Theory, AutoData]
@@ -136,8 +136,8 @@ namespace RestAPI.UnitTests.Controllers
             var user = SetupHttpContent();
             var localId = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            _transferServiceMock
-                .Setup(transferService => transferService.GetAllTransfersAsync(localId, accountIban))
+            _transactionServiceMock
+                .Setup(transactionService => transactionService.GetAllTransfersAsync(localId, accountIban))
                 .ReturnsAsync(shortTransferResponse);
 
             // Act
@@ -148,8 +148,8 @@ namespace RestAPI.UnitTests.Controllers
                 .Which.Result.Should().BeOfType<OkObjectResult>()
                 .Which.Value.Should().BeEquivalentTo(shortTransferResponse);
 
-            _transferServiceMock
-                .Verify(transferService => transferService.GetAllTransfersAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+            _transactionServiceMock
+                .Verify(transactionService => transactionService.GetAllTransfersAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
         }
 
         [Theory, AutoData]
@@ -160,8 +160,8 @@ namespace RestAPI.UnitTests.Controllers
             var user = SetupHttpContent();
             var localId = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            _transferServiceMock
-                .Setup(transferService => transferService.GetAllTransfersAsync(localId, accountIban))
+            _transactionServiceMock
+                .Setup(transactionService => transactionService.GetAllTransfersAsync(localId, accountIban))
                 .ThrowsAsync(new UserException($"You do not have account with IBAN: {accountIban}", 404));
 
             // Act
@@ -172,8 +172,8 @@ namespace RestAPI.UnitTests.Controllers
                 .Which.Result.Should().BeOfType<NotFoundObjectResult>()
                 .Which.Value.Should().BeEquivalentTo($"You do not have account with IBAN: {accountIban}");
 
-            _transferServiceMock
-                .Verify(transferService => transferService.GetAllTransfersAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+            _transactionServiceMock
+                .Verify(transactionService => transactionService.GetAllTransfersAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
         }
 
         [Theory, AutoData]
@@ -185,8 +185,8 @@ namespace RestAPI.UnitTests.Controllers
             var user = SetupHttpContent();
             var localId = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            _transferServiceMock
-                .Setup(transferService => transferService.GetTransferAsync(localId, id))
+            _transactionServiceMock
+                .Setup(transactionService => transactionService.GetTransferAsync(localId, id))
                 .ReturnsAsync(transferResponse);
 
             // Act
@@ -197,8 +197,8 @@ namespace RestAPI.UnitTests.Controllers
                 .Which.Result.Should().BeOfType<OkObjectResult>()
                 .Which.Value.Should().BeEquivalentTo(transferResponse);
 
-            _transferServiceMock
-                .Verify(transferService => transferService.GetTransferAsync(It.IsAny<string>(), It.IsAny<Guid>()), Times.Once);
+            _transactionServiceMock
+                .Verify(transactionService => transactionService.GetTransferAsync(It.IsAny<string>(), It.IsAny<Guid>()), Times.Once);
         }
 
         [Theory, AutoData]
@@ -209,8 +209,8 @@ namespace RestAPI.UnitTests.Controllers
             var user = SetupHttpContent();
             var localId = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            _transferServiceMock
-                .Setup(transferService => transferService.GetTransferAsync(localId, id))
+            _transactionServiceMock
+                .Setup(transactionService => transactionService.GetTransferAsync(localId, id))
                 .ThrowsAsync(new UserException($"You do not have the transfer with Id: {id}", 404));
 
             // Act
@@ -221,8 +221,8 @@ namespace RestAPI.UnitTests.Controllers
                 .Which.Result.Should().BeOfType<NotFoundObjectResult>()
                 .Which.Value.Should().BeEquivalentTo($"You do not have the transfer with Id: {id}");
 
-            _transferServiceMock
-                .Verify(transferService => transferService.GetTransferAsync(It.IsAny<string>(), It.IsAny<Guid>()), Times.Once);
+            _transactionServiceMock
+                .Verify(transactionService => transactionService.GetTransferAsync(It.IsAny<string>(), It.IsAny<Guid>()), Times.Once);
         }
 
         [Theory, AutoData]
@@ -234,8 +234,8 @@ namespace RestAPI.UnitTests.Controllers
             var user = SetupHttpContent();
             var localId = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            _transferServiceMock
-                .Setup(transferService => transferService.UpdateAsync(localId, request.TopUp, request.AccountIban))
+            _transactionServiceMock
+                .Setup(transactionService => transactionService.UpdateAsync(localId, request.TopUp, request.AccountIban))
                 .ReturnsAsync(topUpResponse);
 
             // Act
@@ -246,8 +246,8 @@ namespace RestAPI.UnitTests.Controllers
                 .Which.Result.Should().BeOfType<OkObjectResult>()
                 .Which.Value.Should().BeEquivalentTo(topUpResponse);
 
-            _transferServiceMock
-                .Verify(transferService => transferService.UpdateAsync(It.IsAny<string>(), It.IsAny<decimal>(), It.IsAny<string>()), Times.Once);
+            _transactionServiceMock
+                .Verify(transactionService => transactionService.UpdateAsync(It.IsAny<string>(), It.IsAny<decimal>(), It.IsAny<string>()), Times.Once);
         }
 
         [Theory, AutoData]
@@ -258,8 +258,8 @@ namespace RestAPI.UnitTests.Controllers
             var user = SetupHttpContent();
             var localId = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            _transferServiceMock
-                .Setup(transferService => transferService.UpdateAsync(localId, request.TopUp, request.AccountIban))
+            _transactionServiceMock
+                .Setup(transactionService => transactionService.UpdateAsync(localId, request.TopUp, request.AccountIban))
                 .ThrowsAsync(new UserException($"You do not have account with IBAN: {request.AccountIban}", 404));
 
             // Act
@@ -270,8 +270,8 @@ namespace RestAPI.UnitTests.Controllers
                 .Which.Result.Should().BeOfType<NotFoundObjectResult>()
                 .Which.Value.Should().BeEquivalentTo($"You do not have account with IBAN: {request.AccountIban}");
 
-            _transferServiceMock
-                .Verify(transferService => transferService.UpdateAsync(It.IsAny<string>(), It.IsAny<decimal>(), It.IsAny<string>()), Times.Once);
+            _transactionServiceMock
+                .Verify(transactionService => transactionService.UpdateAsync(It.IsAny<string>(), It.IsAny<decimal>(), It.IsAny<string>()), Times.Once);
         }
 
         [Theory, AutoData]
@@ -283,8 +283,8 @@ namespace RestAPI.UnitTests.Controllers
             var user = SetupHttpContent();
             var localId = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            _transferServiceMock
-                .Setup(transferService => transferService.UpdateAsync(localId, request))
+            _transactionServiceMock
+                .Setup(transactionService => transactionService.UpdateAsync(localId, request))
                 .ReturnsAsync(transferResponse);
 
             // Act
@@ -295,8 +295,8 @@ namespace RestAPI.UnitTests.Controllers
                 .Which.Result.Should().BeOfType<OkObjectResult>()
                 .Which.Value.Should().BeEquivalentTo(transferResponse);
 
-            _transferServiceMock
-                .Verify(transferService => transferService.UpdateAsync(It.IsAny<string>(), It.IsAny<TransferRequest>()), Times.Once);
+            _transactionServiceMock
+                .Verify(transactionService => transactionService.UpdateAsync(It.IsAny<string>(), It.IsAny<TransferRequest>()), Times.Once);
         }
 
         [Theory, AutoData]
@@ -307,8 +307,8 @@ namespace RestAPI.UnitTests.Controllers
             var user = SetupHttpContent();
             var localId = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            _transferServiceMock
-                .Setup(transferService => transferService.UpdateAsync(localId, request))
+            _transactionServiceMock
+                .Setup(transactionService => transactionService.UpdateAsync(localId, request))
                 .ThrowsAsync(new UserException($"You do not have account with IBAN: {request.SenderAccountIban}.", 404));
 
             // Act
@@ -319,8 +319,8 @@ namespace RestAPI.UnitTests.Controllers
                 .Which.Result.Should().BeOfType<NotFoundObjectResult>()
                 .Which.Value.Should().BeEquivalentTo($"You do not have account with IBAN: {request.SenderAccountIban}.");
 
-            _transferServiceMock
-                .Verify(transferService => transferService.UpdateAsync(It.IsAny<string>(), It.IsAny<TransferRequest>()), Times.Once);
+            _transactionServiceMock
+                .Verify(transactionService => transactionService.UpdateAsync(It.IsAny<string>(), It.IsAny<TransferRequest>()), Times.Once);
         }
 
         [Theory, AutoData]
@@ -331,8 +331,8 @@ namespace RestAPI.UnitTests.Controllers
             var user = SetupHttpContent();
             var localId = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            _transferServiceMock
-                .Setup(transferService => transferService.UpdateAsync(localId, request))
+            _transactionServiceMock
+                .Setup(transactionService => transactionService.UpdateAsync(localId, request))
                 .ThrowsAsync(new UserException($"There is not enough money in your account with IBAN: {request.SenderAccountIban}", 400));
 
             // Act
@@ -343,8 +343,8 @@ namespace RestAPI.UnitTests.Controllers
                 .Which.Result.Should().BeOfType<BadRequestObjectResult>()
                 .Which.Value.Should().BeEquivalentTo($"There is not enough money in your account with IBAN: {request.SenderAccountIban}");
 
-            _transferServiceMock
-                .Verify(transferService => transferService.UpdateAsync(It.IsAny<string>(), It.IsAny<TransferRequest>()), Times.Once);
+            _transactionServiceMock
+                .Verify(transactionService => transactionService.UpdateAsync(It.IsAny<string>(), It.IsAny<TransferRequest>()), Times.Once);
         }
 
         private ClaimsPrincipal SetupHttpContent()

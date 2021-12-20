@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Persistence.Respositories
 {
-    public interface ITransfersRepository
+    public interface ITransactionsRepository
     {
         Task<IEnumerable<TransferReadModel>> GetAllTransfersAsync(string accountIban);
 

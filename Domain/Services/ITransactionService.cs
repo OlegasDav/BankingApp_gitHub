@@ -1,5 +1,4 @@
-﻿using Contracts.Enums;
-using Contracts.Models;
+﻿using Contracts.Models;
 using Contracts.Models.Request;
 using Contracts.Models.Response;
 using System;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Services
 {
-    public interface ITransferService
+    public interface ITransactionService
     {
         Task<IEnumerable<ShortTopUpsResponse>> GetAllTopUpsAsync(string localId, string accountIban);
 

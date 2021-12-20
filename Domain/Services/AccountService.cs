@@ -16,9 +16,9 @@ namespace Domain.Services
     {
         private readonly IUsersRepository _usersRepository;
         private readonly IAccountsRepository _accountsRepository;
-        private readonly ITransfersRepository _transfersRepository;
+        private readonly ITransactionsRepository _transfersRepository;
 
-        public AccountService(IUsersRepository usersRepository, IAccountsRepository accountsRepository, ITransfersRepository transfersRepository)
+        public AccountService(IUsersRepository usersRepository, IAccountsRepository accountsRepository, ITransactionsRepository transfersRepository)
         {
             _usersRepository = usersRepository;
             _accountsRepository = accountsRepository;

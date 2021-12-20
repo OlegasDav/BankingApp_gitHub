@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Persistence.Respositories
 {
-    public class TransfersRepository : ITransfersRepository
+    public class TransactionsRepository : ITransactionsRepository
     {
         private readonly ISqlClient _sqlClient;
         private const string TopUpTableName = "topup";
         private const string TransferTableName = "transfer";
 
-        public TransfersRepository(ISqlClient sqlClient)
+        public TransactionsRepository(ISqlClient sqlClient)
         {
             _sqlClient = sqlClient;
         }

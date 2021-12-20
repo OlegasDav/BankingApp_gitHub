@@ -246,7 +246,7 @@ namespace Domain.UnitTests.Services
             AccountReadModel accountReadModel,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
             [Frozen] Mock<IAccountsRepository> accountsRepositoryMock,
-            [Frozen] Mock<ITransfersRepository> transfersRepositoryMock,
+            [Frozen] Mock<ITransactionsRepository> transfersRepositoryMock,
             AccountService sut)
         {
             // Arrange

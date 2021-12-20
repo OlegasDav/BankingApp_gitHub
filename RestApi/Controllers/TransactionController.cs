@@ -17,17 +17,18 @@ namespace RestApi.Controllers
     [Authorize]
     [EmailVerification]
     [ApiController]
-    public class TransferController : ControllerBase
+    [Route("transactions")]
+    public class TransactionController : ControllerBase
     {
-        private readonly ITransferService _transferService;
+        private readonly ITransactionService _transferService;
 
-        public TransferController(ITransferService transferService)
+        public TransactionController(ITransactionService transferService)
         {
             _transferService = transferService;
         }
 
         [HttpGet]
-        [Route("transfers/{accountIban}/topUps")]
+        [Route("{accountIban}/topUps")]
         public async Task<ActionResult<IEnumerable<ShortTopUpsResponse>>> GetAllTopUps(string accountIban)
         {
             try
@@ -45,7 +46,7 @@ namespace RestApi.Controllers
         }
 
         [HttpGet]
-        [Route("transfers/topUps/{id}")]
+        [Route("topUps/{id}")]
         public async Task<ActionResult<ShortTopUpResponse>> GetTopUp(Guid id)
         {
             try
@@ -99,7 +100,7 @@ namespace RestApi.Controllers
         }
 
         [HttpPost]
-        [Route("transfers/topUpAccount")]
+        [Route("topUpAccount")]
         public async Task<ActionResult<TopUpResponse>> TopUpAccount([FromBody] TopUpRequest request)
         {
             try
@@ -117,7 +118,7 @@ namespace RestApi.Controllers
         }
 
         [HttpPost]
-        [Route("transfers/makeTransfer")]
+        [Route("makeTransfer")]
         public async Task<ActionResult<TransferResponse>> MakeTransfer([FromBody] TransferRequest request)
         {
             try

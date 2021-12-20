@@ -29,7 +29,7 @@ namespace Domain.UnitTests.Services
             UserReadModel userReadModel,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
             [Frozen] Mock<IAccountsRepository> accountsRepositoryMock,
-            TransferService sut)
+            TransactionService sut)
         {
             // Arrange
             usersRepositoryMock
@@ -68,8 +68,8 @@ namespace Domain.UnitTests.Services
             IEnumerable<TopUpReadModel> topUpReadModels,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
             [Frozen] Mock<IAccountsRepository> accountsRepositoryMock,
-            [Frozen] Mock<ITransfersRepository> transfersRepositoryMock,
-            TransferService sut)
+            [Frozen] Mock<ITransactionsRepository> transfersRepositoryMock,
+            TransactionService sut)
         {
             // Arrange
             usersRepositoryMock
@@ -114,8 +114,8 @@ namespace Domain.UnitTests.Services
             Guid id,
             UserReadModel userReadModel,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
-            [Frozen] Mock<ITransfersRepository> transfersRepositoryMock,
-            TransferService sut)
+            [Frozen] Mock<ITransactionsRepository> transfersRepositoryMock,
+            TransactionService sut)
         {
             // Arrange
             usersRepositoryMock
@@ -153,8 +153,8 @@ namespace Domain.UnitTests.Services
             TopUpReadModel topUpReadModel,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
             [Frozen] Mock<IAccountsRepository> accountsRepositoryMock,
-            [Frozen] Mock<ITransfersRepository> transfersRepositoryMock,
-            TransferService sut)
+            [Frozen] Mock<ITransactionsRepository> transfersRepositoryMock,
+            TransactionService sut)
         {
             // Arrange
             usersRepositoryMock
@@ -202,8 +202,8 @@ namespace Domain.UnitTests.Services
             AccountReadModel accountReadModel,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
             [Frozen] Mock<IAccountsRepository> accountsRepositoryMock,
-            [Frozen] Mock<ITransfersRepository> transfersRepositoryMock,
-            TransferService sut)
+            [Frozen] Mock<ITransactionsRepository> transfersRepositoryMock,
+            TransactionService sut)
         {
             // Arrange
             usersRepositoryMock
@@ -249,7 +249,7 @@ namespace Domain.UnitTests.Services
             UserReadModel userReadModel,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
             [Frozen] Mock<IAccountsRepository> accountsRepositoryMock,
-            TransferService sut)
+            TransactionService sut)
         {
             // Arrange
             usersRepositoryMock
@@ -288,8 +288,8 @@ namespace Domain.UnitTests.Services
             IEnumerable<TransferReadModel> transferReadModels,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
             [Frozen] Mock<IAccountsRepository> accountsRepositoryMock,
-            [Frozen] Mock<ITransfersRepository> transfersRepositoryMock,
-            TransferService sut)
+            [Frozen] Mock<ITransactionsRepository> transfersRepositoryMock,
+            TransactionService sut)
         {
             // Arrange
             usersRepositoryMock
@@ -334,8 +334,8 @@ namespace Domain.UnitTests.Services
             Guid id,
             UserReadModel userReadModel,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
-            [Frozen] Mock<ITransfersRepository> transfersRepositoryMock,
-            TransferService sut)
+            [Frozen] Mock<ITransactionsRepository> transfersRepositoryMock,
+            TransactionService sut)
         {
             // Arrange
             usersRepositoryMock
@@ -373,8 +373,8 @@ namespace Domain.UnitTests.Services
             TransferReadModel transferReadModel,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
             [Frozen] Mock<IAccountsRepository> accountsRepositoryMock,
-            [Frozen] Mock<ITransfersRepository> transfersRepositoryMock,
-            TransferService sut)
+            [Frozen] Mock<ITransactionsRepository> transfersRepositoryMock,
+            TransactionService sut)
         {
             // Arrange
             usersRepositoryMock
@@ -427,8 +427,8 @@ namespace Domain.UnitTests.Services
             AccountReadModel accountReadModel,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
             [Frozen] Mock<IAccountsRepository> accountsRepositoryMock,
-            [Frozen] Mock<ITransfersRepository> transfersRepositoryMock,
-            TransferService sut)
+            [Frozen] Mock<ITransactionsRepository> transfersRepositoryMock,
+            TransactionService sut)
         {
             // Arrange
             usersRepositoryMock
@@ -480,7 +480,7 @@ namespace Domain.UnitTests.Services
             UserReadModel userReadModel,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
             [Frozen] Mock<IAccountsRepository> accountsRepositoryMock,
-            TransferService sut)
+            TransactionService sut)
         {
             // Arrange
             usersRepositoryMock
@@ -519,8 +519,8 @@ namespace Domain.UnitTests.Services
             AccountReadModel accountReadModel,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
             [Frozen] Mock<IAccountsRepository> accountsRepositoryMock,
-            [Frozen] Mock<ITransfersRepository> transfersRepositoryMock,
-            TransferService sut)
+            [Frozen] Mock<ITransactionsRepository> transfersRepositoryMock,
+            TransactionService sut)
         {
             // Arrange
             usersRepositoryMock
@@ -571,7 +571,7 @@ namespace Domain.UnitTests.Services
             UserReadModel userReadModel,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
             [Frozen] Mock<IAccountsRepository> accountsRepositoryMock,
-            TransferService sut)
+            TransactionService sut)
         {
             // Arrange
             usersRepositoryMock
@@ -609,7 +609,7 @@ namespace Domain.UnitTests.Services
             AccountReadModel accountReadModel,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
             [Frozen] Mock<IAccountsRepository> accountsRepositoryMock,
-            TransferService sut)
+            TransactionService sut)
         {
             // Arrange
             usersRepositoryMock
@@ -657,7 +657,7 @@ namespace Domain.UnitTests.Services
             AccountReadModel accountReadModel2,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
             [Frozen] Mock<IAccountsRepository> accountsRepositoryMock,
-            TransferService sut)
+            TransactionService sut)
         {
             // Arrange
             accountReadModel1.Balance = _random.Next(1, 100);
@@ -708,8 +708,8 @@ namespace Domain.UnitTests.Services
             AccountReadModel accountReadModel2,
             [Frozen] Mock<IUsersRepository> usersRepositoryMock,
             [Frozen] Mock<IAccountsRepository> accountsRepositoryMock,
-            [Frozen] Mock<ITransfersRepository> transfersRepositoryMock,
-            TransferService sut)
+            [Frozen] Mock<ITransactionsRepository> transfersRepositoryMock,
+            TransactionService sut)
         {
             // Arrange
             accountReadModel1.Balance = _random.Next(101, int.MaxValue);

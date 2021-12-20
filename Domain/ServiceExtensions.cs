@@ -30,7 +30,7 @@ namespace Domain
             services
                 .AddSingleton<IAuthService, AuthService>()
                 .AddSingleton<IAccountService, AccountService>()
-                .AddSingleton<ITransferService, TransferService>();
+                .AddSingleton<ITransactionService, TransactionService>();
 
             return services;
         }

@@ -3,10 +3,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Respositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistence
 {
@@ -28,7 +24,7 @@ namespace Persistence
             services
                 .AddSingleton<IUsersRepository, UsersRepository>()
                 .AddSingleton<IAccountsRepository, AccountsRepository>()
-                .AddSingleton<ITransfersRepository, TransfersRepository>();
+                .AddSingleton<ITransactionsRepository, TransactionsRepository>();
 
             return services;
         }
